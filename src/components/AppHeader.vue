@@ -1,16 +1,18 @@
-<template lang="">
-     <div>
-        <nav class="navbar  my_bg">
-  <div class="container-fluid ">
-    <a class="navbar-brand " href="#">
-      <img src="" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-    </a>
+<template>
     <div>
-        <a href="http://127.0.0.1:8000">Area Ristoratore</a>
-    </div>
-  </div>
-</nav>
-    </div>
+       <nav class="navbar">
+         <div class="container-fluid d-flex justify-content-between">
+           <h1>Deliveboo</h1>
+           <div>
+               <a href="http://127.0.0.1:8000">Area Ristoratore</a>
+           </div>
+       </div>
+     </nav>
+   </div>
+
+   <div>
+    <img class="my_jumbo" src="../../src/img/bg_jumbo-1.jpeg" alt="jumbo_image">
+   </div>
 </template>
 <script>
 export default {
@@ -18,11 +20,15 @@ export default {
 }
 </script>
 <style lang="scss">
-    .my_bg{
-        background-color: #FD7F00;
-    }
-    a{
-        text-decoration: none;
-        color:black ;
-    }
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.my_jumbo{
+    width: 100%;
+}
 </style>
