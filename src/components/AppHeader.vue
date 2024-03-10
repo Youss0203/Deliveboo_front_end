@@ -1,34 +1,41 @@
 <template>
-    <div>
-       <nav class="navbar">
-         <div class="container-fluid d-flex justify-content-between">
-           <h1>Deliveboo</h1>
-           <div>
-               <a href="http://127.0.0.1:8000">Area Ristoratore</a>
-           </div>
-       </div>
-     </nav>
-   </div>
+  <div>
+    <nav class="navbar">
+      <div class="container-fluid d-flex justify-content-between">
+        <img src="../img/deliveboo_logo.png" class="custom_logo" alt="logo" />
+        <div>
+          <a href="http://127.0.0.1:8000" class="btn btn-dark border-0 fw-bold"
+            >Area Ristoratore</a
+          >
+        </div>
+      </div>
+    </nav>
+  </div>
 
-   <div>
-    <img class="my_jumbo" src="../../src/img/bg_jumbo-1.jpeg" alt="jumbo_image">
-   </div>
+  <div>
+    <img class="my_jumbo" src="../../src/img/bg_jumbo-1.jpeg" alt="jumbo_image" />
+  </div>
 </template>
+
 <script>
-export default {
-
-}
+export default {};
 </script>
-<style lang="scss">
 
-
+<style lang="scss" scoped>
 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
+  background-color: #fe7e00;
+  &:hover {
+    color: white;
+  }
 }
 
+.custom_logo {
+  height: 2.5rem;
+}
 
-.my_jumbo{
-    width: 100%;
+.my_jumbo {
+  width: 100%;
 }
 </style>
