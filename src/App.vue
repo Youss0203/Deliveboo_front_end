@@ -1,17 +1,17 @@
 <template>
   <AppHeader />
   <AppMain />
-  <AppFooter />
+  <!-- <AppFooter /> -->
   <RouterView />
 </template>
 
 <script>
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
-import AppFooter from "./components/AppFooter.vue";
+// import AppFooter from "./components/AppFooter.vue";
 
 export default {
-  components: { AppHeader, AppFooter, AppMain },
+  components: { AppHeader, AppMain },
 };
 </script>
 
