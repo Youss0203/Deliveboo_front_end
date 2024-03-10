@@ -4,7 +4,9 @@
       <div class="container-fluid d-flex justify-content-between">
         <img src="../img/deliveboo_logo.png" class="custom_logo" alt="logo" />
         <div>
-          <a href="http://127.0.0.1:8000" class="btn btn-dark border-0 fw-bold"
+          <a
+            href="http://127.0.0.1:8000"
+            class="btn btn-dark border-0 fw-bold custom_font"
             >Area Ristoratore</a
           >
         </div>
@@ -22,6 +24,12 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/scss/app.scss";
+
+.custom_font {
+  @extend .shantell-sans;
+}
+
 a {
   text-decoration: none;
   color: black;
