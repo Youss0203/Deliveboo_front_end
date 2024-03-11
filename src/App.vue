@@ -1,8 +1,7 @@
 <template>
   <AppHeader />
   <RouterView />
- <AppFooter />
-  
+  <AppFooter />
 </template>
 
 <script>
