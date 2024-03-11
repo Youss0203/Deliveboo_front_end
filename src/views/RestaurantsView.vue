@@ -1,6 +1,42 @@
 <template >
     <div class="container">
         <div class="row">
+            <div class="col-12 my-3 d-flex justify-content-end">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal">Filtri</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalLabel">Filtri</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <!-- checkbox -->
+                            <div class="modal-body">
+                                <p>Filtro categorie:</p>
+
+                                <div class="row">
+                                    <div class="col-6" v-for="category in categories">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" v-model="filteredCategories" :value="category.id" id="checkbox">
+                                            <label class="form-check-label" for="checkbox">
+                                                {{ category.name }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="getRestaurants">Mostra</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-6" v-for="restaurant in restaurants">
                 <div class="card mb-3">
                     <div class="row g-0">
@@ -30,31 +66,47 @@ export default {
     data() {
         return {
             restaurants: [],
+            categories: [],
+            filteredCategories: []
         }
     },
 
     methods: {
         getRestaurants() {
+
+            this.filteredCategories.push(this.$route.params.category);
+            // console.log(this.filteredCategories);
             axios.get('http://127.0.0.1:8000/api/restaurants', {
                 params: {
-                    category: this.$route.params.category
-
+                    category: this.filteredCategories
                 }
             })
                 .then((response) => {
-                    console.log(response.data.results);
+                    console.log(response);
                     this.restaurants = response.data.results;
 
                 })
                 .catch(function (error) {
                     console.warn(error);
                 })
-        }
+        },
+        getCategories() {
+        axios.get("http://127.0.0.1:8000/api/categories", {
+            params: {},
+            })
+            .then((response) => {
+            // console.log(response.data.results);
+            this.categories = response.data.results;
+            })
+            .catch(function (error) {
+            console.warn(error);
+            });
+        },
     },
 
     created() {
         this.getRestaurants();
-        console.log(this.restaurants)
+        this.getCategories();
     }
 }
 
