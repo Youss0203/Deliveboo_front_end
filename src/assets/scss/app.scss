@@ -1,11 +1,11 @@
 // Stili per il font Shantell Sans
-.shantell-sans {
-    font-family: "Shantell Sans", cursive;
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+
+
+.montserrat {
+    font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
-    font-weight: normal;
+    font-weight: 400;
     font-style: normal;
-    font-variation-settings:
-        "BNCE" 0,
-        "INFM" 0,
-        "SPAC" 0;
 }

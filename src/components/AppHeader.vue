@@ -27,7 +27,7 @@ export default {};
 @import "../assets/scss/app.scss";
 
 .custom_font {
-  @extend .shantell-sans;
+  @extend .montserrat;
 }
 
 a {
