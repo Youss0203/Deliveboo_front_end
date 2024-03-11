@@ -139,7 +139,7 @@ export default {
 
     p {
         font-size: 1.8rem;
-        font-weight: 700;
+        font-weight: 500;
     }
 
     .lista-centrale {

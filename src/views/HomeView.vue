@@ -10,7 +10,7 @@
       </h4>
     </div>
   </div>
-  <section class="container-fluid custom_font py-5">
+  <section class="container custom_font py-5">
     <div>
       <div class="row d-flex justify-content-center">
         <!-- <h1 class="text-center mb-4">Categorie</h1> -->
