@@ -11,7 +11,7 @@
       </div>
     </div>
     <!-- carosello con img di piatti  -->
-    <div class="mb-5">
+    <!-- <div class="mb-5">
       <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -49,10 +49,10 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-    </div>
+    </div> -->
     <div>
       <div class="row d-flex justify-content-center">
-        <h1 class="text-center mb-4">Categorie</h1>
+        <!-- <h1 class="text-center mb-4">Categorie</h1> -->
         <div
           class="card btn col-5 m-2 mb-5 d-flex align-items-center custom_bg pt-3"
           style="width: 12rem"
@@ -60,7 +60,7 @@
           @click="$router.push({ name: 'restaurants', params: { category: category.id } })"
         >
           <img :src="category.img_url" class="card-img-top" style="width: 4.5rem;" alt="..." />
-            <p class="btn fw-bold fs-5 pb-0">
+            <p class="btn fs-5 pb-0">
               {{ category.name }}
             </p>
         </div>
