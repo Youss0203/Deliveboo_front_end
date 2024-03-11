@@ -142,10 +142,7 @@ export default {
         font-weight: 500;
     }
 
-    .lista-centrale {
 
-
-    }
 
     li img{
 

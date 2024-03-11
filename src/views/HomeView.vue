@@ -9,26 +9,26 @@
         click!
       </h4>
     </div>
+
   </div>
   <section class="container custom_font py-5">
-    <div>
-      <div class="row d-flex justify-content-center">
-        <!-- <h1 class="text-center mb-4">Categorie</h1> -->
-        
-        <div class="card btn m-2 mb-5 d-flex align-items-center custom_bg pt-3 my-card"
-          v-for="category in categories"
+    
+    <div class="row d-flex justify-content-center">
+      <!-- <h1 class="text-center mb-4">Categorie</h1> -->
+      
+      <div class="card btn m-2 mb-5 d-flex align-items-center custom_bg pt-3 my-card"
+        v-for="category in categories"
 
-          @click="$router.push({ name: 'restaurants', params: { category: category.id } })">
-        
-          <img :src="category.img_url" class="card-img-top w-50" alt="..." />
+        @click="$router.push({ name: 'restaurants', params: { category: category.id } })">
+      
+        <img :src="category.img_url" class="card-img-top w-50" alt="..." />
 
-          <p class="btn fs-5 pb-0">
-            {{ category.name }}
-          </p>
+        <p class="btn fs-5 pb-0">
+          {{ category.name }}
+        </p>
 
-        </div>
-       
       </div>
+      
     </div>
   </section>
 </template>
@@ -100,4 +100,6 @@ export default {
 
   background-color: #27B8B2;
 }
+
+
 </style>

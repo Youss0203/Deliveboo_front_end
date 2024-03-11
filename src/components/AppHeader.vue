@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar">
       <div class="container-fluid d-flex justify-content-between">
-        <img src="../img/deliveboo_logo.png" class="custom_logo" alt="logo" />
+        <img src="../img/logo.jpeg" class="custom_logo" alt="logo" />
         <div>
           <a
             href="http://127.0.0.1:8000"
@@ -28,14 +28,19 @@ export default {};
 
 a {
   text-decoration: none;
-  color: black;
+  color: white;
   background-color: #fe7e00;
   &:hover {
-    color: white;
+    background-color: #27B8B2
   }
 }
 
 .custom_logo {
   height: 2.5rem;
+}
+
+.navbar {
+
+  background-color: #fe7e00;
 }
 </style>
