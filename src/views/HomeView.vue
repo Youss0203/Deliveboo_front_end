@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <img class="my_jumbo" src="../../src/img/bg_jumbo-1.jpeg" alt="jumbo_image" />
+  </div>
   <section class="container-fluid custom_font">
     <div class="row py-4">
       <!-- titolo con button per cercare ristoranti e piatti (???) -->
@@ -51,7 +54,7 @@
       </div>
     </div> -->
     <div>
-      <div class="row d-flex justify-content-center">
+      <div class="row d-flex justify-content-center col-8 offset-2">
         <!-- <h1 class="text-center mb-4">Categorie</h1> -->
         <div
           class="card btn col-5 m-2 mb-5 d-flex align-items-center custom_bg pt-3"
@@ -118,4 +121,7 @@ export default {
   background-color: #ffc200;
 }
 
+.my_jumbo {
+  width: 100%;
+}
 </style>
