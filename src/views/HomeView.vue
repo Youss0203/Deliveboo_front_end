@@ -2,7 +2,7 @@
   <div class="position-relative">
     <img class="my_jumbo" src="../../src/img/bg_jumbo-1.jpeg" alt="jumbo_image" />
     <!-- titolo con button per cercare ristoranti e piatti (???) -->
-    <div class="col-8 offset-2 custom_font custom_position">
+    <div class="col-8 offset-2 custom_font custom_position d-none d-lg-block">
       <h2 class="text-center mb-4">Ordina cibo comodamente da casa</h2>
       <h4 class="text-center custom_font d-xs-none d-md-block">
         Ristoranti, Osterie, Pizzerie, Fast food e molto altro, tutto a portata di un
@@ -12,19 +12,22 @@
   </div>
   <section class="container-fluid custom_font py-5">
     <div>
-      <div class="row d-flex justify-content-center offset-1 col-10 offset-lg-2 col-lg-8">
+      <div class="row d-flex justify-content-center">
         <!-- <h1 class="text-center mb-4">Categorie</h1> -->
-        <div
-          class="card btn m-2 mb-5 d-flex align-items-center custom_bg pt-3"
-          style="width: 12rem"
+        
+        <div class="card btn m-2 mb-5 d-flex align-items-center custom_bg pt-3 my-card"
           v-for="category in categories"
-          @click="$router.push({ name: 'restaurants', params: { category: category.id } })"
-        >
-          <img :src="category.img_url" class="card-img-top" style="width: 4.5rem;" alt="..." />
-            <p class="btn fs-5 pb-0">
-              {{ category.name }}
-            </p>
+
+          @click="$router.push({ name: 'restaurants', params: { category: category.id } })">
+        
+          <img :src="category.img_url" class="card-img-top w-50" alt="..." />
+
+          <p class="btn fs-5 pb-0">
+            {{ category.name }}
+          </p>
+
         </div>
+       
       </div>
     </div>
   </section>
@@ -71,22 +74,30 @@ export default {
   @extend .montserrat;
 }
 
-.carousel-inner {
-  max-height: 22rem;
-}
 
-.custom_bg{
+
+.custom_bg {
   background-color: #ffc200;
+  width: 12rem;
 }
 
 .my_jumbo {
   width: 100%;
 }
 
-.custom_position{
+
+
+.custom_position {
   bottom: 0;
   right: 50;
   position: absolute;
   padding-bottom: 20px;
+
+  // display: none;
+}
+
+.custom_bg:hover {
+
+  background-color: #27B8B2;
 }
 </style>
