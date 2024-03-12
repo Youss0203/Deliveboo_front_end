@@ -74,6 +74,57 @@
 
   </section>    
 
+  <!--la parte dei feedback fake-->
+
+  <section class="feedback_sfondo">
+    <h1 class="title-user d-flex justify-content-center">
+      Gli utenti dicono su questo sito 
+    </h1>
+    <div class="container-fluid">
+      <div class="row mt-3 d-flex justify-content-center">
+        <div class="col-xs-12 col-md-2 ">
+          <div class="card border-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header border-dark">
+    <img src="../img/meal.png" class="image-user"> Giacomo <span>&#9733; 4.5 eccellente</span></div>
+  <div class="title justify-content-center">
+    <h2 class="card-title ">Stupendo</h2>
+    <p>Un sito davvero incredibile, grazie di esistere.</p>
+  </div>
+</div>
+        </div>
+        <div class="col-xs-12 col-md-2 ">
+          <div class="card border-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header border-dark">
+    <img src="../img/meal.png" class="image-user"> Riccardo <span>&#9733; 5 eccellente</span></div>
+  <div class="title justify-content-center">
+    <h2 class="card-title ">Caspita</h2>
+    <p>Veramente efficente e bello da vedere, senza parole.</p>
+  </div>
+</div>
+        </div>
+        <div class="col-xs-12 col-md-2 ">
+          <div class="card border-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header border-dark">
+    <img src="../img/meal.png" class="image-user"> Riccardo <span>&#9733; 5 eccellente</span></div>
+  <div class="title justify-content-center">
+    <h2 class="card-title ">Caspita</h2>
+    <p>Veramente efficente e bello da vedere, senza parole.</p>
+  </div>
+</div>
+        </div>
+        <div class="col-xs-12 col-md-2 ">
+          <div class="card border-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header border-dark">
+    <img src="../img/meal.png" class="image-user"> Riccardo <span>&#9733; 5 eccellente</span></div>
+  <div class="title justify-content-center">
+    <h2 class="card-title ">Caspita</h2>
+    <p>Veramente efficente e bello da vedere, senza parole.</p>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </template>
 
@@ -141,10 +192,20 @@ export default {
   transition: all 0.5s ease; 
 }
 
+.image-user{
+  width: 35px;
+  color: #27B8B2;
+}
+
 .image-sx:hover {
   width: 460px;
 
 }
+
+.span{
+  color: green;
+}
+
 
 .custom_bg:hover {
   background-color: #27B8B2;
