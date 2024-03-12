@@ -28,9 +28,53 @@
         </p>
 
       </div>
-      
     </div>
   </section>
+
+  <section class="my_sfondo">
+
+      <!-- da qua in poi ci possiamo fare un elemento  -->
+    <div class="container-fluid">
+      <div class="row d-flex justify-content-center">
+        <img src="../img/food sx.jpg" class="image-sx mt-4">
+        <div class="col-xs-12 col-md-4">
+          <h1 class="title-sx mt-5">
+            Soddisfiamo le tue aspettative
+          </h1>
+          <p class="descrizione mt-5 d-flex flex-row-reverse">
+              Se a casa hai voglia di mangiare, allora non perdere tempo e megnatiiiii naaaa pizzaaa
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-8">
+      
+        </div>
+        <!-- fine primo elemento -->
+        <div class="container-fluid">
+          <div class="row d-flex justify-content-center">
+            <div class="col-xs-12 col-md-4 ">
+          <h1 class="title-dx mt-5 text-end">
+            Soddisfiamo le tue aspettative
+          </h1>
+          <p class="descrizione-dx mt-5 text-end">
+              Se a casa hai voglia di mangiare, allora non perdere tempo 
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 ">
+          <img src="../img/food dx.jpg" class="image-sx mb-4">
+        </div>
+        <!-- fine secondo elemento -->
+      </div>
+    </div>
+          </div>
+        </div>
+        <!-- secondo elemento -->
+        
+      
+      <!-- da inserire fino a qua -->
+
+  </section>    
+
+
 </template>
 
 <script>
@@ -74,8 +118,6 @@ export default {
   @extend .montserrat;
 }
 
-
-
 .custom_bg {
   background-color: #ffc200;
   width: 12rem;
@@ -85,20 +127,33 @@ export default {
   width: 100%;
 }
 
-
-
 .custom_position {
   bottom: 0;
   right: 50;
   position: absolute;
   padding-bottom: 20px;
-
   // display: none;
 }
 
-.custom_bg:hover {
+.image-sx {
+  width: 450px;
+  border-radius: 20%;
+  transition: all 0.5s ease; 
+}
 
+.image-sx:hover {
+  width: 460px;
+
+}
+
+.custom_bg:hover {
   background-color: #27B8B2;
+}
+
+// regole scss per l'ultimo elemento
+.my_sfondo{
+
+  background-color: #27b8b2;
 }
 
 
