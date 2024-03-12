@@ -28,9 +28,39 @@
         </p>
 
       </div>
-      
     </div>
   </section>
+
+  <section class="my_sfondo">
+
+      <!-- da qua in poi ci possiamo fare un elemento  -->
+    <div class="container-fluid">
+      <div class="row">
+        <!-- primo elemento -->
+        <div class="col-xs-12 col-md-4">
+          
+        </div>
+        <div class="col-xs-12 col-md-8">
+      
+        </div>
+        <!-- fine primo elemento -->
+
+        <!-- secondo elemento -->
+        <div class="col-xs-12 col-md-8">
+          
+        </div>
+        <div class="col-xs-12 col-md-4 ">
+      
+        </div>
+        <!-- fine secondo elemento -->
+      </div>
+    </div>
+      
+      <!-- da inserire fino a qua -->
+
+  </section>    
+
+
 </template>
 
 <script>
@@ -74,8 +104,6 @@ export default {
   @extend .montserrat;
 }
 
-
-
 .custom_bg {
   background-color: #ffc200;
   width: 12rem;
@@ -85,20 +113,21 @@ export default {
   width: 100%;
 }
 
-
-
 .custom_position {
   bottom: 0;
   right: 50;
   position: absolute;
   padding-bottom: 20px;
-
   // display: none;
 }
 
 .custom_bg:hover {
-
   background-color: #27B8B2;
+}
+
+// regole scss per l'ultimo elemento
+.custom_blue{
+  background-color: #27b8b2;
 }
 
 
