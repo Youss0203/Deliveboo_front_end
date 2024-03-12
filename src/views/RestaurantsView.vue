@@ -46,10 +46,8 @@
                         </div>
                         <div class=" col-6">
                             <div class="card-body">
-                                <h5 class="card-title fw-bold">{{ restaurant.company_name }}</h5>
-                                <p class="card-text">Address: {{ restaurant.address }}</p>
                                 <h5 class="card-title fs-2">{{ restaurant.company_name }}</h5>
-                                <p class="fs-6">{{ restaurant.address }}</p>
+                                <p class="fs-6">Indirizzo: {{ restaurant.address }}</p>
                             </div>
                         </div>
                     </div>
