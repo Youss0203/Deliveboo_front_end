@@ -45,10 +45,8 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">{{ restaurant.company_name }}</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                    additional
-                                    content. This content is a little bit longer.</p>
+                                <h5 class="card-title fw-bold">{{ restaurant.company_name }}</h5>
+                                <p class="card-text">Address: {{ restaurant.address }}</p>
                             </div>
                         </div>
                     </div>
