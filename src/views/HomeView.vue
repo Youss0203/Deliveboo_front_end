@@ -31,14 +31,19 @@
     </div>
   </section>
 
-  <section class="my_sfondo">
+  <section class="my_sfondo ">
 
       <!-- da qua in poi ci possiamo fare un elemento  -->
     <div class="container-fluid">
       <div class="row">
-        <!-- primo elemento -->
+        <img src="../img/food sx.jpg" class="image-sx mt-4">
         <div class="col-xs-12 col-md-4">
-          
+          <h1 class="title-sx mt-5">
+            Soddisfiamo le tue aspettative
+          </h1>
+          <p class="descrizione mt-5 d-flex flex-row-reverse">
+              Se a casa hai voglia di mangiare, allora non perdere tempo e megnatiiiii naaaa pizzaaa
+          </p>
         </div>
         <div class="col-xs-12 col-md-8">
       
@@ -47,10 +52,15 @@
 
         <!-- secondo elemento -->
         <div class="col-xs-12 col-md-8">
-          
+          <h1 class="title-dx mt-5 text-end">
+            Soddisfiamo le tue aspettative
+          </h1>
+          <p class="descrizione-dx mt-5 text-end">
+              Se a casa hai voglia di mangiare, allora non perdere tempo e megnatiiiii naaaa pizzaaa
+          </p>
         </div>
         <div class="col-xs-12 col-md-4 ">
-      
+          <img src="../img/food dx.jpg" class="image-sx mb-4">
         </div>
         <!-- fine secondo elemento -->
       </div>
@@ -121,12 +131,24 @@ export default {
   // display: none;
 }
 
+.image-sx {
+  width: 450px;
+  border-radius: 20%;
+  transition: all 0.5s ease; 
+}
+
+.image-sx:hover {
+  width: 460px;
+
+}
+
 .custom_bg:hover {
   background-color: #27B8B2;
 }
 
 // regole scss per l'ultimo elemento
-.custom_blue{
+.my_sfondo{
+
   background-color: #27b8b2;
 }
 
