@@ -31,11 +31,11 @@
     </div>
   </section>
 
-  <section class="my_sfondo ">
+  <section class="my_sfondo">
 
       <!-- da qua in poi ci possiamo fare un elemento  -->
     <div class="container-fluid">
-      <div class="row">
+      <div class="row d-flex justify-content-center">
         <img src="../img/food sx.jpg" class="image-sx mt-4">
         <div class="col-xs-12 col-md-4">
           <h1 class="title-sx mt-5">
@@ -49,14 +49,14 @@
       
         </div>
         <!-- fine primo elemento -->
-
-        <!-- secondo elemento -->
-        <div class="col-xs-12 col-md-8">
+        <div class="container-fluid">
+          <div class="row d-flex justify-content-center">
+            <div class="col-xs-12 col-md-4 ">
           <h1 class="title-dx mt-5 text-end">
             Soddisfiamo le tue aspettative
           </h1>
           <p class="descrizione-dx mt-5 text-end">
-              Se a casa hai voglia di mangiare, allora non perdere tempo e megnatiiiii naaaa pizzaaa
+              Se a casa hai voglia di mangiare, allora non perdere tempo 
           </p>
         </div>
         <div class="col-xs-12 col-md-4 ">
@@ -65,6 +65,10 @@
         <!-- fine secondo elemento -->
       </div>
     </div>
+          </div>
+        </div>
+        <!-- secondo elemento -->
+        
       
       <!-- da inserire fino a qua -->
 
