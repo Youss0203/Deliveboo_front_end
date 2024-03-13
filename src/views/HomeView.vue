@@ -14,9 +14,8 @@
   <section class="container custom_font py-5">
     <div class="row d-flex justify-content-center">
       <!-- <h1 class="text-center mb-4">Categorie</h1> -->
-      <div class="card btn m-2 mb-5 d-flex align-items-center custom_bg pt-3 my-card"
-        v-for="category in categories"
-        @click="$router.push({ name: 'restaurants', params: { category: category.id } })">
+      <div class="card btn m-2 mb-5 d-flex align-items-center custom_bg pt-3 my-card" v-for="category in categories"
+        @click="addFilter(category.id)">
         <img :src="category.img_url" class="card-img-top w-50" alt="..." />
         <p class="btn fs-5 pb-0">
           {{ category.name }}
@@ -25,8 +24,44 @@
     </div>
   </section>
 
+  <section class="container custom_font py-5" v-if="restaurants != ''">
+    <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <div class="col-12" v-for="category in categories">
+            <div>
+              <p @click="addFilter(category.id)">
+                {{ category.name }}
+              </p>
+            </div>
+          </div>
+          {{ filteredCategories }}
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col-12 " v-for="restaurant in restaurants">
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-12">
+                  <img :src="restaurant.img_url" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class=" col-12">
+                  <div class="card-body">
+                    <h5 class="card-title fs-2">{{ restaurant.company_name }}</h5>
+                    <p class="fs-6">Indirizzo: {{ restaurant.address }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="my_sfondo">
-      <!-- da qua in poi ci possiamo fare un elemento  -->
+    <!-- da qua in poi ci possiamo fare un elemento  -->
     <div class="container-fluid">
       <div class="row d-flex justify-content-center">
         <img src="../img/food sx.jpg" class="image-sx mt-4">
@@ -35,33 +70,36 @@
             Sapore che viaggia fino a te.
           </h2>
           <p class="descrizione d-flex flex-row-reverse custom_font_size">
-            Scegli tra una vasta selezione di piatti deliziosi da ristoranti locali e nazionali. Con Deliveboo, gusti eccezionali viaggiano direttamente fino a te, portando l'esperienza culinaria che meriti direttamente nella tua casa con un semplice clic!
+            Scegli tra una vasta selezione di piatti deliziosi da ristoranti locali e nazionali. Con Deliveboo, gusti
+            eccezionali viaggiano direttamente fino a te, portando l'esperienza culinaria che meriti direttamente nella
+            tua casa con un semplice clic!
           </p>
         </div>
         <div class="col-xs-12 col-md-8">
-      
+
         </div>
         <!-- fine primo elemento -->
         <div class="container-fluid">
           <div class="row d-flex justify-content-center">
             <div class="col-xs-12 col-md-4 ps-4">
-          <h2 class="title-dx mt-5 mb-2 text-end fw-bold">
-            Porta il party direttamente a casa tua!
-          </h2>
-          <p class="descrizione-dx text-end custom_font_size">
-            Scopri il gusto e la comodità di portare il party direttamente a casa tua con il nostro servizio di food delivery! Ordina con un semplice clic e lascia che la festa abbia inizio nella comodità del tuo salotto! 
-          </p>
-        </div>
-        <div class="col-xs-12 col-md-4 ">
-          <img src="../img/food dx.jpg" class="image-sx mb-4">
-        </div>
-        <!-- fine secondo elemento -->
-      </div>
-    </div>
+              <h2 class="title-dx mt-5 mb-2 text-end fw-bold">
+                Porta il party direttamente a casa tua!
+              </h2>
+              <p class="descrizione-dx text-end custom_font_size">
+                Scopri il gusto e la comodità di portare il party direttamente a casa tua con il nostro servizio di food
+                delivery! Ordina con un semplice clic e lascia che la festa abbia inizio nella comodità del tuo salotto!
+              </p>
+            </div>
+            <div class="col-xs-12 col-md-4 ">
+              <img src="../img/food dx.jpg" class="image-sx mb-4">
+            </div>
+            <!-- fine secondo elemento -->
           </div>
         </div>
+      </div>
+    </div>
 
-  </section>    
+  </section>
   <!-- recensioni -->
   <!-- <section class="sfondo_orange">
     <div class="container-fluid">
@@ -122,10 +160,29 @@ export default {
   data() {
     return {
       categories: [],
+      filteredCategories: [],
+      restaurants: [],
+
     };
   },
 
   methods: {
+    getRestaurants() {
+
+      axios.get('http://127.0.0.1:8000/api/restaurants', {
+        params: {
+          category: this.filteredCategories
+        }
+      })
+        .then((response) => {
+          console.log(response);
+          this.restaurants = response.data.results;
+
+        })
+        .catch(function (error) {
+          console.warn(error);
+        })
+    },
     getCategories() {
       axios
         .get("http://127.0.0.1:8000/api/categories", {
@@ -139,10 +196,28 @@ export default {
           console.warn(error);
         });
     },
+    addFilter(category) {
+
+      if(this.filteredCategories.includes(category)){
+        let index = this.filteredCategories.indexOf(category)
+        //delete this.filteredCategories[index]
+        this.filteredCategories.splice(index, 1)
+        // this.filteredCategories.pop()
+        // console.log('ciao')
+      }else{
+        this.filteredCategories.push(category)
+      }
+      
+      this.getRestaurants()
+
+    }
+
   },
 
   created() {
+
     this.getCategories();
+
   },
 };
 </script>
@@ -156,7 +231,7 @@ export default {
 
 // section.container.custom_font{
 //   background-image: url(../img/sfondo-food.jpg);
- 
+
 // }
 .custom_bg {
   background-color: #ffc200;
@@ -164,23 +239,23 @@ export default {
 }
 
 .sfondo_orange {
-    background-image: url('../img/sfondo-food.jpg');
-    object-fit: contain;
+  background-image: url('../img/sfondo-food.jpg');
+  object-fit: contain;
 }
 
-.custom_font_color{
+.custom_font_color {
   // color: #dd9117;
 }
 
-.custom_font_size{
+.custom_font_size {
   font-size: 15px;
 }
 
-.star{
+.star {
   color: white;
 }
 
-.card-header{
+.card-header {
   background-color: #27B8B2;
 }
 
@@ -188,7 +263,7 @@ export default {
   width: 100%;
 }
 
-.image-user{
+.image-user {
   height: 35px;
 }
 
@@ -203,7 +278,7 @@ export default {
 .image-sx {
   width: 436px;
   border-radius: 20%;
-  transition: all 0.5s ease; 
+  transition: all 0.5s ease;
 }
 
 .image-sx:hover {
@@ -216,8 +291,7 @@ export default {
 }
 
 // regole scss per l'ultimo elemento
-.my_sfondo{
+.my_sfondo {
   background-color: #27b8b2;
 }
-
 </style>
