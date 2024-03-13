@@ -1,13 +1,10 @@
 <template>
     <footer class="my_bg pt-3">
         <div class="container w-75">
-           
             <div class="row justify-content-between m-0">
-
                 <div class="col-3">
                     <p>Servizio clienti</p>
                     <ul class="">
-                        
                         <li>
                             Domande frequenti
                         </li>
@@ -24,21 +21,17 @@
                             Domande frequenti
                         </li>
                     </ul>
-
                 </div>
 
                 <div class="col-3 my-padding-footer">
                     <p>Cucine</p>
                     <ul class="lista-centrale">
                         <li v-for="category in categories" @click="$router.push({ name: 'restaurants', params: { category: category.id } })">
-                       
                             {{ category.name }}
                         </li>
-                    
                     </ul>
-                        
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                     <p>Chi siamo</p>
                     <ul class="traslate">
                         <li>
@@ -68,17 +61,9 @@
                         <li>
                             <img src="../img/appstore-1.png" alt="" class="">
                         </li>
-                    </ul>
-                    
-                        
+                    </ul>                        
                 </div>
-               
-
-
-
             </div>
-
-
         </div>
    </footer>
 </template>
@@ -122,17 +107,14 @@ export default {
         background-color: #fd7f00;
     }
 
-
     li {
-
         list-style: none;
         line-height: 1.9rem;
-
     }
 
     li:hover {
         text-decoration: underline;
-        }
+    }
 
     ul {
         padding: 0px 0px 0px 0px;
@@ -143,11 +125,7 @@ export default {
         font-weight: 500;
     }
 
-
-
     li img{
-
-    width: 100px;
+        width: 100px;
     }
-
 </style>
