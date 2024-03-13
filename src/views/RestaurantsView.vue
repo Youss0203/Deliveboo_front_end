@@ -38,16 +38,18 @@
                 </div>
             </div>
             
-            <div class="col-6" v-for="restaurant in restaurants">
+            <div class="col-12 col-md-4 col-lg-3" v-for="restaurant in restaurants">
                 <div class="card mb-3">
                     <div class="row g-0">
-                        <div class="col-md-6">
+                        <div class="col-12">
                             <img :src="restaurant.img_url" class="img-fluid rounded-start" alt="...">
                         </div>
-                        <div class=" col-6">
+                        <div class=" col-12">
                             <div class="card-body">
                                 <h5 class="card-title fs-2">{{ restaurant.company_name }}</h5>
                                 <p class="fs-6">Indirizzo: {{ restaurant.address }}</p>
+
+
                             </div>
                         </div>
                     </div>
