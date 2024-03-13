@@ -20,6 +20,9 @@
                         <li>
                             Scarica l'app DeliveBoo
                         </li>
+                        <li>
+                            Domande frequenti
+                        </li>
                     </ul>
 
                 </div>
@@ -31,9 +34,7 @@
                        
                             {{ category.name }}
                         </li>
-                        <li>
-                            Domande frequenti
-                        </li>
+                    
                     </ul>
                         
                 </div>
