@@ -2,7 +2,8 @@
   <div>
     <nav class="navbar">
       <div class="container-fluid d-flex justify-content-between">
-        <img src="../img/logo.jpeg" class="custom_logo" alt="logo" />
+        <img src="../img/logo.jpeg" class="custom_logo" alt="logo" v-on:click="navigateToHome"/>
+
         <div>
           <a
             href="http://127.0.0.1:8000"
@@ -16,7 +17,17 @@
 </template>
 
 <script>
-export default {};
+import HomeView from '@/views/HomeView.vue';
+
+export default {
+
+  methods: {
+    navigateToHome () {
+      this.$router.push('/')
+    }
+  }
+
+};
 </script>
 
 <style lang="scss" scoped>
