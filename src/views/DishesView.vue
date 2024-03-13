@@ -48,7 +48,7 @@ export default {
             params: {},
             })
             .then((response) => {
-            // console.log(response.data.results);
+            console.log(response.data.results);
             this.restaurant = response.data.results;
             })
             .catch(function (error) {

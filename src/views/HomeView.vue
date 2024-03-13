@@ -30,12 +30,11 @@
         <div class="row">
           <div class="col-12" v-for="category in categories">
             <div>
-              <p @click="addFilter(category.id)" class="my_bord fs-5">
+              <p @click="addFilter(category.id)" class="my_bord fs-5" :class="filteredCategories.includes(category.id) ? 'active' : '' ">
                 {{ category.name }}
               </p>
             </div>
           </div>
-          {{ filteredCategories }}
         </div>
       </div>
       <div class="col-8">
@@ -323,5 +322,9 @@ export default {
   &:hover{
     background-color:#27B8B2
   }
+}
+
+.active{
+  background-color: green;
 }
 </style>
