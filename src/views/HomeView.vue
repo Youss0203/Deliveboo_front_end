@@ -30,22 +30,22 @@
     </div>
   </section>
 
-  <section class="container custom_font py-5" v-if="restaurants != ''">
+  <section class="container custom_font py-5" v-if="restaurants">
     <div class="row">
       <div class="col-4">
         <div class="row">
           <div class="col-12" v-for="category in categories">
             <div>
-              <p @click="addFilter(category.id)">
+              <p @click="addFilter(category.id)" class="my_bord fs-5" :class="filteredCategories.includes(category.id) ? 'active' : '' ">
                 {{ category.name }}
               </p>
             </div>
           </div>
-          {{ filteredCategories }}
         </div>
       </div>
       <div class="col-8">
         <div class="row">
+
           <div class="col-12" v-for="restaurant in restaurants">
             <div class="card mb-3">
               <div class="row g-0">
@@ -55,6 +55,7 @@
                     class="img-fluid rounded-start"
                     alt="..."
                   />
+
                 </div>
                 <div class="col-12">
                   <div class="card-body">
@@ -62,6 +63,24 @@
                       {{ restaurant.company_name }}
                     </h5>
                     <p class="fs-6">Indirizzo: {{ restaurant.address }}</p>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <!--card orizzontale-->
+
+            <div class="card mb-3" style="max-width: 800px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img :src="restaurant.img_url" class="img-fluid rounded-start w-100" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ restaurant.company_name }}</h5>
+                    <p class="card-text">
+                      {{ restaurant.address }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -164,6 +183,7 @@
       </div>
     </div>
   </section> -->
+  
 </template>
 
 <script>
@@ -210,15 +230,19 @@ export default {
         });
     },
     addFilter(category) {
+
       if (this.filteredCategories.includes(category)) {
         let index = this.filteredCategories.indexOf(category);
+
         //delete this.filteredCategories[index]
         this.filteredCategories.splice(index, 1);
         // this.filteredCategories.pop()
         // console.log('ciao')
       } else {
+
         this.filteredCategories.push(category);
       }
+
 
       this.getRestaurants();
     },
@@ -308,10 +332,24 @@ export default {
 
 
 
+
 .my-card-flex {
 
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+.my_bord {
+  border: 1px solid #EFEDEA;
+  border-radius: 2rem;
+  padding: 0.25rem 1rem;
+  &:hover{
+    background-color:#27B8B2
+  }
+}
+
+.active{
+  background-color: green;
+
 }
 </style>
