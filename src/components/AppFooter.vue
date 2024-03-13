@@ -1,9 +1,13 @@
 <template>
     <footer class="my_bg pt-3">
-        <div class="container w-75">
+
+        <div class="container my-footer-container">
+           
             <div class="row justify-content-between m-0">
-                <div class="col-3">
-                    <p>Servizio clienti</p>
+
+                <div class="col-4">
+                    <p class="my-font-footer">Servizio clienti</p>
+
                     <ul class="">
                         <li>
                             Domande frequenti
@@ -23,16 +27,18 @@
                     </ul>
                 </div>
 
-                <div class="col-3 my-padding-footer">
-                    <p>Cucine</p>
+                <div class="col-4 my-padding-footer">
+                    <p class="my-font-footer">Cucine</p>
                     <ul class="lista-centrale">
                         <li v-for="category in categories" @click="$router.push({ name: 'restaurants', params: { category: category.id } })">
                             {{ category.name }}
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-3">
-                    <p>Chi siamo</p>
+
+                <div class="col-4">
+                    <p class="my-font-footer">Chi siamo</p>
+
                     <ul class="traslate">
                         <li>
                             Informazioni su DeliveBoo
@@ -124,6 +130,13 @@ export default {
         font-size: 1.8rem;
         font-weight: 500;
     }
+
+
+    .my-font-footer {
+        font-size: 18px;
+    }
+
+
 
     li img{
         width: 100px;
