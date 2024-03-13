@@ -19,9 +19,7 @@
       <!-- <h1 class="text-center mb-4">Categorie</h1> -->
       <div
         class="card btn m-2 mb-5 d-flex align-items-center custom_bg pt-3 my-card"
-        v-for="category in categories"
-        @click="addFilter(category.id)"
-      >
+        v-for="category in categories" @click="addFilter(category.id)">
         <img :src="category.img_url" class="card-img-top w-50" alt="..." />
         <p class="btn fs-5 pb-0">
           {{ category.name }}
@@ -47,27 +45,6 @@
         <div class="row">
 
           <div class="col-12" v-for="restaurant in restaurants">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-12">
-                  <img
-                    :src="restaurant.img_url"
-                    class="img-fluid rounded-start"
-                    alt="..."
-                  />
-
-                </div>
-                <div class="col-12">
-                  <div class="card-body">
-                    <h5 class="card-title fs-2">
-                      {{ restaurant.company_name }}
-                    </h5>
-                    <p class="fs-6">Indirizzo: {{ restaurant.address }}</p>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
             <!--card orizzontale-->
 
             <div class="card mb-3" style="max-width: 800px;">
@@ -338,7 +315,7 @@ export default {
   display: flex;
   justify-content: center;
   flex-direction: column;
-
+}
 .my_bord {
   border: 1px solid #EFEDEA;
   border-radius: 2rem;
