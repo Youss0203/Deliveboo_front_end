@@ -12,37 +12,30 @@
 
   </div>
   <section class="container custom_font py-5">
-    
     <div class="row d-flex justify-content-center">
       <!-- <h1 class="text-center mb-4">Categorie</h1> -->
-      
       <div class="card btn m-2 mb-5 d-flex align-items-center custom_bg pt-3 my-card"
         v-for="category in categories"
-
         @click="$router.push({ name: 'restaurants', params: { category: category.id } })">
-      
         <img :src="category.img_url" class="card-img-top w-50" alt="..." />
-
         <p class="btn fs-5 pb-0">
           {{ category.name }}
         </p>
-
       </div>
     </div>
   </section>
 
   <section class="my_sfondo">
-
       <!-- da qua in poi ci possiamo fare un elemento  -->
     <div class="container-fluid">
       <div class="row d-flex justify-content-center">
         <img src="../img/food sx.jpg" class="image-sx mt-4">
-        <div class="col-xs-12 col-md-4">
-          <h1 class="title-sx mt-5">
-            Soddisfiamo le tue aspettative
-          </h1>
-          <p class="descrizione mt-5 d-flex flex-row-reverse">
-              Se a casa hai voglia di mangiare, allora non perdere tempo 
+        <div class="col-xs-12 col-md-4 ps-4">
+          <h2 class="title-sx mt-5 fw-bold">
+            Sapore che viaggia fino a te.
+          </h2>
+          <p class="descrizione d-flex flex-row-reverse custom_font_size">
+            Scegli tra una vasta selezione di piatti deliziosi da ristoranti locali e nazionali. Con Deliveboo, gusti eccezionali viaggiano direttamente fino a te, portando l'esperienza culinaria che meriti direttamente nella tua casa con un semplice clic!
           </p>
         </div>
         <div class="col-xs-12 col-md-8">
@@ -51,12 +44,12 @@
         <!-- fine primo elemento -->
         <div class="container-fluid">
           <div class="row d-flex justify-content-center">
-            <div class="col-xs-12 col-md-4 ">
-          <h1 class="title-dx mt-5 text-end">
-            Soddisfiamo le tue aspettative
-          </h1>
-          <p class="descrizione-dx mt-5 text-end">
-              Se a casa hai voglia di mangiare, allora non perdere tempo 
+            <div class="col-xs-12 col-md-4 ps-4">
+          <h2 class="title-dx mt-5 mb-2 text-end fw-bold">
+            Porta il party direttamente a casa tua!
+          </h2>
+          <p class="descrizione-dx text-end custom_font_size">
+            Scopri il gusto e la comodità di portare il party direttamente a casa tua con il nostro servizio di food delivery! Ordina con un semplice clic e lascia che la festa abbia inizio nella comodità del tuo salotto! 
           </p>
         </div>
         <div class="col-xs-12 col-md-4 ">
@@ -67,14 +60,10 @@
     </div>
           </div>
         </div>
-        <!-- secondo elemento -->
-        
-      
-      <!-- da inserire fino a qua -->
 
   </section>    
-
-  <section class="sfondo_orange">
+  <!-- recensioni -->
+  <!-- <section class="sfondo_orange">
     <div class="container-fluid">
       <div class="row d-flex justify-content-center">
         <div class="col-xs-12 col-md-3 ">
@@ -121,8 +110,7 @@
         </div>
       </div>
     </div>
-  </section>
-
+  </section> -->
 </template>
 
 <script>
@@ -166,10 +154,10 @@ export default {
   @extend .montserrat;
 }
 
-section.container.custom_font{
-  background-image: url(../img/sfondo-food.jpg);
+// section.container.custom_font{
+//   background-image: url(../img/sfondo-food.jpg);
  
-}
+// }
 .custom_bg {
   background-color: #ffc200;
   width: 12rem;
@@ -178,14 +166,19 @@ section.container.custom_font{
 .sfondo_orange {
     background-image: url('../img/sfondo-food.jpg');
     object-fit: contain;
+}
 
-    
+.custom_font_color{
+  // color: #dd9117;
+}
+
+.custom_font_size{
+  font-size: 15px;
 }
 
 .star{
   color: white;
 }
-
 
 .card-header{
   background-color: #27B8B2;
@@ -208,13 +201,13 @@ section.container.custom_font{
 }
 
 .image-sx {
-  width: 450px;
+  width: 436px;
   border-radius: 20%;
   transition: all 0.5s ease; 
 }
 
 .image-sx:hover {
-  width: 460px;
+  width: 445px;
 
 }
 
@@ -224,9 +217,7 @@ section.container.custom_font{
 
 // regole scss per l'ultimo elemento
 .my_sfondo{
-
   background-color: #27b8b2;
 }
-
 
 </style>

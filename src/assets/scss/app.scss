@@ -1,8 +1,6 @@
 // Stili per il font Shantell Sans
 // <uniquifier>: Use a unique and descriptive class name
 // <weight>: Use a value from 100 to 900
-
-
 .montserrat {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -14,22 +12,16 @@
 
 
 // TABLET RESPONSIVE SCSS
-@media screen and (min-width: 768px) {
-   
-  
-
-   
-
-}
+@media screen and (min-width: 768px) {}
 
 
 
 /* DESKTOP RESPONSIVE CSS  */
 @media screen and (min-width: 992px) {
 
-li img{
+    li img {
 
-    width: 150px;
-}
-  
+        width: 150px;
+    }
+
 }
