@@ -30,7 +30,7 @@
         <div class="row">
           <div class="col-12" v-for="category in categories">
             <div>
-              <p @click="addFilter(category.id)">
+              <p @click="addFilter(category.id)" class="my_bord fs-5">
                 {{ category.name }}
               </p>
             </div>
@@ -40,16 +40,37 @@
       </div>
       <div class="col-8">
         <div class="row">
-          <div class="col-12 " v-for="restaurant in restaurants">
-            <div class="card mb-3">
+          <div class=" col-12 " v-for="restaurant in restaurants">
+            <!--card in verticale-->
+
+
+            <!-- <div class="card mb-3" style="width: 18rem;"> 
               <div class="row g-0">
                 <div class="col-12">
-                  <img :src="restaurant.img_url" class="img-fluid rounded-start" alt="...">
+                  <img :src="restaurant.img_url" class="img-fluid rounded-start w-100" alt="restaurant image">
                 </div>
                 <div class=" col-12">
                   <div class="card-body">
                     <h5 class="card-title fs-2">{{ restaurant.company_name }}</h5>
                     <p class="fs-6">Indirizzo: {{ restaurant.address }}</p>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <!--card orizzontale-->
+
+            <div class="card mb-3" style="max-width: 800px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img :src="restaurant.img_url" class="img-fluid rounded-start w-100" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ restaurant.company_name }}</h5>
+                    <p class="card-text">
+                      {{ restaurant.address }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -198,16 +219,16 @@ export default {
     },
     addFilter(category) {
 
-      if(this.filteredCategories.includes(category)){
+      if (this.filteredCategories.includes(category)) {
         let index = this.filteredCategories.indexOf(category)
         //delete this.filteredCategories[index]
         this.filteredCategories.splice(index, 1)
         // this.filteredCategories.pop()
         // console.log('ciao')
-      }else{
+      } else {
         this.filteredCategories.push(category)
       }
-      
+
       this.getRestaurants()
 
     }
@@ -293,5 +314,14 @@ export default {
 // regole scss per l'ultimo elemento
 .my_sfondo {
   background-color: #27b8b2;
+}
+
+.my_bord {
+  border: 1px solid #EFEDEA;
+  border-radius: 2rem;
+  padding: 0.25rem 1rem;
+  &:hover{
+    background-color:#27B8B2
+  }
 }
 </style>
