@@ -12,7 +12,14 @@
 
 
 // TABLET RESPONSIVE SCSS
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+
+
+    .my-padding-footer {
+
+        padding-left: 2.7rem;
+    }
+}
 
 
 
@@ -24,4 +31,9 @@
         width: 150px;
     }
 
+
+    .my-padding-footer {
+
+        padding-left: 2.7rem;
+    }
 }

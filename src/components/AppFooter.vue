@@ -1,8 +1,8 @@
 <template>
     <footer class="my_bg pt-3">
-        <div class="container w-100">
+        <div class="container w-75">
            
-            <div class="row w-100 justify-content-between m-0">
+            <div class="row justify-content-between m-0">
 
                 <div class="col-3">
                     <p>Servizio clienti</p>
@@ -27,7 +27,7 @@
 
                 </div>
 
-                <div class="col-3">
+                <div class="col-3 my-padding-footer">
                     <p>Cucine</p>
                     <ul class="lista-centrale">
                         <li v-for="category in categories" @click="$router.push({ name: 'restaurants', params: { category: category.id } })">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-3">
                     <p>Chi siamo</p>
-                    <ul class="">
+                    <ul class="traslate">
                         <li>
                             Informazioni su DeliveBoo
                         </li>
