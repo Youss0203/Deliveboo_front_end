@@ -24,7 +24,7 @@
     </div>
   </section>
 
-  <section class="container custom_font py-5" v-if="restaurants != ''">
+  <section class="container custom_font py-5" v-if="restaurants">
     <div class="row">
       <div class="col-4">
         <div class="row">
