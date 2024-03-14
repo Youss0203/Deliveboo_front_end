@@ -175,7 +175,7 @@ export default {
     return {
       categories: [],
       filteredCategories: [],
-      restaurants: [],
+      restaurants: null,
 
     };
   },
@@ -255,9 +255,9 @@ export default {
   object-fit: contain;
 }
 
-.custom_font_color {
-  // color: #dd9117;
-}
+// .custom_font_color {
+//   // color: #dd9117;
+// }
 
 .custom_font_size {
   font-size: 15px;

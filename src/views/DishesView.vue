@@ -14,7 +14,8 @@
                                 <h5 class="card-title fw-bold fs-2">{{ dish.name }}</h5>
                                 <p class="card-text fs-6">Ingredienti : {{ dish.ingredients }}</p>
                                 <p class="card-text fs-6">Prezzo : {{ dish.price }} €</p>
-                                <button class="btn btn-success">Aggiungi al carello</button>
+                                <button class="btn btn-success " @click="addDish(dish)">Aggiungi al carello</button>
+                                {{cart}}
                             </div>
                         </div>
                     </div>
@@ -37,39 +38,24 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">Piatto 1</th>
-            <td>19.99</td>
+        <tr v-for="dish in cart">
+            <th scope="row"></th>
+            <td>
+                {{dish.name}}
+            </td>
             <td>
                 <div class="cart-item">
-                    <button @click="decreaseQuantity">-</button>
-                    <span>{{ quantity }}</span>
-                    <button @click="increaseQuantity">+</button>
+                    <button @click="removeFromCart(dish.id)">-</button>
+                    <span>{{dish.quantity}}</span>
+                    <button @click="addDish(dish.id)">+</button>
                 </div>
             </td>
-        </tr>
-        <tr>
-            <th scope="row">Piatto 2</th>
-            <td>19.99</td>
             <td>
-                <div class="cart-item">
-                    <button @click="decreaseQuantity">-</button>
-                    <span>{{ quantity }}</span>
-                    <button @click="increaseQuantity">+</button>
-                </div>
-            </td>
+                {{dish.price}}
+            </td>    
+
         </tr>
-        <tr>
-            <th scope="row">Piatto 3</th>
-            <td>100k</td>
-            <td>
-                <div class="cart-item">
-                    <button @click="decreaseQuantity">-</button>
-                    <span>{{ quantity }}</span>
-                    <button @click="increaseQuantity">+</button>
-                </div>
-            </td>
-        </tr>
+
     </tbody>
 </table>
 
@@ -99,11 +85,71 @@ export default {
         return {
             dishes: [],
             quantity: this.initialQuantity,
+            cart: [
+
+            ],
         }
     },
 
 
     methods: {
+        addDish(dish) {
+            let isDishInCart = false;
+
+            //Se il carrello è vuoto, aggiungi il piatto
+            if (this.cart.length === 0) {
+                this.cart.push({
+                    id: dish.id,
+                    name: dish.name,
+                    price: dish.price,
+                    quantity: 0,
+                    
+                });
+                isDishInCart = true;
+                
+            }
+
+            for (let i = 0; i < this.cart.length; i++) {
+                if (!isDishInCart) {
+                    this.cart.push({
+                        id: dish.id,
+                        name: dish.name,
+                        price: dish.price,
+                        quantity: 1,
+                        
+                    });
+                } else if (this.cart[i].id === dish.id) {
+                    this.cart[i].quantity++;
+                    isDishInCart = true;
+                    break;
+                }
+            }
+
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+            console.log(localStorage.getItem('cart'));
+        },
+
+        removeFromCart(id) {
+            // Cerca l'indice del piatto nel carrello
+            const index = this.cart.findIndex(item => item.id === id);
+
+            // Se l'elemento è stato trovato
+            if (index !== -1) {
+                // Se la quantità è maggiore di 1, decrementa la quantità
+                if (this.cart[index].quantity > 1) {
+                    this.cart[index].quantity--;
+                } else {
+                    // Altrimenti, rimuovi il piatto completamente
+                    this.cart.splice(index, 1);
+                }
+
+                // Aggiorna il carrello nel localStorage
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+                console.log('Piatto rimosso dal carrello:', id);
+            } else {
+                console.warn('Impossibile trovare il piatto nel carrello:', id);
+            }
+        },
         getDishes() {
             axios
                 .get("http://127.0.0.1:8000/api/dishes", {
@@ -119,18 +165,11 @@ export default {
                     console.warn(error);
                 });
         },
-        decreaseQuantity() {
-            if (this.quantity > 0) {
-                this.quantity--;
-            }
-        },
-        increaseQuantity() {
-            this.quantity++;
-        },
     },
-    created(){
-    this.getDishes();
-},
+    created() {
+        this.getDishes();
+
+    },
 
 };
 
