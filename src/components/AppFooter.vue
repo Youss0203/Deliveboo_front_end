@@ -1,64 +1,64 @@
 <template>
     <footer class="my_bg pt-3">
 
-        <div class="container my-footer-container">
+        <div class="container px-0 px-md-5">
            
             <div class="row justify-content-between m-0">
-
+                
                 <div class="col-4">
-                    <p class="my-font-footer">Servizio clienti</p>
-
+                    <p class="footer-title-font fw-bold">Servizio clienti</p>
+                    
                     <ul class="">
-                        <li>
-                            Domande frequenti
+                        <li class="footer_font">
+                            FAQ
                         </li>
-                        <li>
-                            Accedi come ristoratore
+                        <li class="footer_font">
+                            Area ristoratore
                         </li>
-                        <li>
+                        <!-- <li class="footer_font">
                             Miglior prezzo garantino
+                        </li> -->
+                        <li class="footer_font">
+                            Contatti
                         </li>
-                        <li>
-                            Scarica l'app DeliveBoo
-                        </li>
-                        <li>
+                        <!-- <li class="footer_font">
                             Domande frequenti
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
 
-                <div class="col-4 my-padding-footer">
-                    <p class="my-font-footer">Cucine</p>
+                <div class="col-4 d-flex align-items-center flex-column">
+                    <p class="footer-title-font middle-title fw-bold">Cucine</p>
                     <ul class="lista-centrale">
-                        <li v-for="category in categories" @click="$router.push({ name: 'restaurants', params: { category: category.id } })">
+                        <li v-for="category in categories" @click="$router.push({ name: 'restaurants', params: { category: category.id } })" class="footer_font">
                             {{ category.name }}
                         </li>
                     </ul>
                 </div>
 
-                <div class="col-4">
-                    <p class="my-font-footer">Chi siamo</p>
+                <div class="col-4 d-flex align-items-end flex-column">
+                    <!-- <p class="footer-title-font pe-5 fw-bold">Chi siamo</p> -->
 
                     <ul class="traslate">
-                        <li>
+                        <li class="footer_font fw-bold custom-first-li">
                             Informazioni su DeliveBoo
                         </li>
-                        <li>
+                        <li class="footer_font">
                             Lavora con Noi  
                         </li>
-                        <li>
+                        <li class="footer_font">
                             Media e press 
                         </li>
-                        <li>
-                            Informazioni sulla Privacy
+                        <li class="footer_font">
+                            Privacy
                         </li>
-                        <li>
+                        <li class="footer_font">
                             Sostenibilità
                         </li>
-                        <li>
+                        <li class="footer_font">
                             Termini e condizioni
                         </li>
-                        <li>
+                        <li class="footer_font">
                             Codice Etico
                         </li>
                         <li class="pt-3">
@@ -131,14 +131,42 @@ export default {
         font-weight: 500;
     }
 
-
-    .my-font-footer {
-        font-size: 18px;
+    .footer-title-font {
+        font-size: 17px;
+        transition: transform 0.5s;
+        &:hover {
+        transform: scale(1.1);
+        }
     }
 
-
-
     li img{
-        width: 100px;
+        width: 100px;        
+        transition: transform 0.5s;
+        &:hover {
+        transform: scale(1.2);
+        }
+    }
+
+    .footer_font{
+        font-size: 13px;
+        transition: transform 0.5s;
+        &:hover {
+        transform: scale(1.2);
+        color: white;
+        }
+    }
+
+    .middle-title{
+        padding-right: 17px;
+    }
+
+    .custom-first-li{
+        font-size: 17px;
+        transition: transform 0.5s;
+        &:hover {
+        transform: scale(1.1);
+        color: black;
+        text-decoration: none;
+        }
     }
 </style>
