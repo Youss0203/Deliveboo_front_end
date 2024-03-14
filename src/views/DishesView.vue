@@ -14,7 +14,7 @@
                                 <h5 class="card-title fw-bold fs-2">{{ dish.name }}</h5>
                                 <p class="card-text fs-6">Ingredienti : {{ dish.ingredients }}</p>
                                 <p class="card-text fs-6">Prezzo : {{ dish.price }} €</p>
-                                <button class="btn btn-success " @click="addDish(dish)">Aggiungi al carello</button>
+                                <button class="btn btn-success " @click="addDish(dish)">Aggiungi al carrello</button>
                                 {{cart}}
                             </div>
                         </div>
@@ -47,15 +47,13 @@
                 <div class="cart-item">
                     <button @click="removeFromCart(dish.id)">-</button>
                     <span>{{dish.quantity}}</span>
-                    <button @click="addDish(dish.id)">+</button>
+                    <button @click="increaseQuantity(dish.id)">+</button>
                 </div>
             </td>
             <td>
                 {{dish.price}}
             </td>    
-
         </tr>
-
     </tbody>
 </table>
 
@@ -94,40 +92,42 @@ export default {
 
     methods: {
         addDish(dish) {
-            let isDishInCart = false;
+    // Cerca se il piatto è già nel carrello
+    const index = this.cart.findIndex(item => item.id === dish.id);
 
-            //Se il carrello è vuoto, aggiungi il piatto
-            if (this.cart.length === 0) {
-                this.cart.push({
-                    id: dish.id,
-                    name: dish.name,
-                    price: dish.price,
-                    quantity: 0,
-                    
-                });
-                isDishInCart = true;
-                
-            }
+    // Se il piatto è già nel carrello, incrementa la quantità
+    if (index !== -1) {
+        this.cart[index].quantity++;
+    } else {
+        // Altrimenti, aggiungi il piatto al carrello con quantità 1
+        this.cart.push({
+            id: dish.id,
+            name: dish.name,
+            price: dish.price,
+            quantity: 1
+        });
+    }
 
-            for (let i = 0; i < this.cart.length; i++) {
-                if (!isDishInCart) {
-                    this.cart.push({
-                        id: dish.id,
-                        name: dish.name,
-                        price: dish.price,
-                        quantity: 1,
-                        
-                    });
-                } else if (this.cart[i].id === dish.id) {
-                    this.cart[i].quantity++;
-                    isDishInCart = true;
-                    break;
-                }
-            }
+    // Aggiorna il carrello nel localStorage
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+    console.log(localStorage.getItem('cart'));
+},
+increaseQuantity(id) {
+        // Cerca l'indice del piatto nel carrello
+        const index = this.cart.findIndex(item => item.id === id);
 
+        // Se l'elemento è stato trovato
+        if (index !== -1) {
+            // Incrementa la quantità del piatto
+            this.cart[index].quantity++;
+
+            // Aggiorna il carrello nel localStorage
             localStorage.setItem('cart', JSON.stringify(this.cart));
-            console.log(localStorage.getItem('cart'));
-        },
+            console.log('Quantità aumentata per il piatto:', id);
+        } else {
+            console.warn('Impossibile trovare il piatto nel carrello:', id);
+        }
+    },
 
         removeFromCart(id) {
             // Cerca l'indice del piatto nel carrello
