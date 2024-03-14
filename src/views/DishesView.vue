@@ -33,21 +33,20 @@
     <thead>
         <tr>
             <th scope="col">Piatto</th>
-            <th scope="col">Prezzo</th>
             <th scope="col">Quantità</th>
+            <th scope="col">Prezzo</th>
         </tr>
     </thead>
     <tbody>
         <tr v-for="dish in cart">
-            <th scope="row"></th>
             <td>
                 {{dish.name}}
             </td>
             <td>
                 <div class="cart-item">
-                    <button @click="removeFromCart(dish.id)">-</button>
+                    <button @click="removeFromCart(dish.id)" class="btn btn-danger p-1 m-1">-</button>
                     <span>{{dish.quantity}}</span>
-                    <button @click="increaseQuantity(dish.id)">+</button>
+                    <button @click="increaseQuantity(dish.id)" class="btn btn-success p-1 m-1">+</button>
                 </div>
             </td>
             <td>
