@@ -15,7 +15,7 @@
                                 <p class="card-text fs-6">Ingredienti : {{ dish.ingredients }}</p>
                                 <p class="card-text fs-6">Prezzo : {{ dish.price }} €</p>
                                 <button class="btn btn-success " @click="addDish(dish)">Aggiungi al carrello</button>
-                                {{cart}}
+                                
                             </div>
                         </div>
                     </div>
@@ -28,38 +28,49 @@
             <!--qui ci deve andare il carrello-->
             <div class="card mt-5" >
                 <div class="card-body">
-                    <h5 class="card-title text-center">Carrello</h5>
+                    <h5 class="card-title text-center fw-bold">Carrello</h5>
                     <table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Piatto</th>
-            <th scope="col">Quantità</th>
-            <th scope="col">Prezzo</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr v-for="dish in cart">
-            <td>
-                {{dish.name}}
-            </td>
-            <td>
-                <div class="cart-item">
-                    <button @click="removeFromCart(dish.id)" class="btn btn-danger p-1 m-1">-</button>
-                    <span>{{dish.quantity}}</span>
-                    <button @click="increaseQuantity(dish.id)" class="btn btn-success p-1 m-1">+</button>
-                </div>
-            </td>
-            <td>
-                {{dish.price}}
-            </td>    
-        </tr>
-    </tbody>
-</table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Piatto</th>
+                                <th scope="col">Quantità</th>
+                                <th scope="col">Prezzo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="dish in cart">
+                                <td>
+                                    {{dish.name}}
+                                </td>
+                                <td>
+                                    <div class="cart-item">
+                                        <button @click="removeFromCart(dish.id)" class="btn btn-danger p-1 m-1">-</button>
+                                        <span>{{dish.quantity}}</span>
+                                        <button @click="increaseQuantity(dish.id)" class="btn btn-success p-1 m-1">+</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ calculateTotalForDish(dish) }} €
+                                </td>    
+                            </tr>
+                        </tbody>
+                    </table>
 
-                    <!-- <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
-                    <p class="card-text"></p>
-                    <a href="#" class="card-link"></a>
-                    <a href="#" class="card-link"></a> -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Quantità totale</th>
+                                <th scope="col">Totale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> {{ getTotalQuantity() }} </td>
+                                <td>{{ getTotalPrice().toFixed(2) }} €</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
                 </div>
             </div>
         </div>
@@ -110,23 +121,23 @@ export default {
     // Aggiorna il carrello nel localStorage
     localStorage.setItem('cart', JSON.stringify(this.cart));
     console.log(localStorage.getItem('cart'));
-},
-increaseQuantity(id) {
-        // Cerca l'indice del piatto nel carrello
-        const index = this.cart.findIndex(item => item.id === id);
-
-        // Se l'elemento è stato trovato
-        if (index !== -1) {
-            // Incrementa la quantità del piatto
-            this.cart[index].quantity++;
-
-            // Aggiorna il carrello nel localStorage
-            localStorage.setItem('cart', JSON.stringify(this.cart));
-            console.log('Quantità aumentata per il piatto:', id);
-        } else {
-            console.warn('Impossibile trovare il piatto nel carrello:', id);
-        }
     },
+    increaseQuantity(id) {
+            // Cerca l'indice del piatto nel carrello
+            const index = this.cart.findIndex(item => item.id === id);
+
+            // Se l'elemento è stato trovato
+            if (index !== -1) {
+                // Incrementa la quantità del piatto
+                this.cart[index].quantity++;
+
+                // Aggiorna il carrello nel localStorage
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+                console.log('Quantità aumentata per il piatto:', id);
+            } else {
+                console.warn('Impossibile trovare il piatto nel carrello:', id);
+            }
+        },
 
         removeFromCart(id) {
             // Cerca l'indice del piatto nel carrello
@@ -164,6 +175,19 @@ increaseQuantity(id) {
                     console.warn(error);
                 });
         },
+
+        // totale quantita dei piatti 
+        getTotalQuantity() {
+        return this.cart.reduce((total, dish) => total + dish.quantity, 0);
+        },
+        // prezzo totale del carrello
+        getTotalPrice() {
+            return this.cart.reduce((total, dish) => total + (dish.quantity * dish.price), 0);
+        },
+        // prezzo totale di un piatto singolo X quantità
+        calculateTotalForDish(dish) {
+        return (dish.price * dish.quantity).toFixed(2);
+    },
     },
     created() {
         this.getDishes();
