@@ -47,7 +47,8 @@
           <div class="col-12" v-for="restaurant in restaurants">
             <!--card orizzontale-->
 
-            <div class="card mb-3" style="max-width: 800px;">
+
+              <div class="card mb-3" style="max-width: 800px;" @click="$router.push({name:'dishes', params:{restaurant: restaurant.id }})">
               <div class="row g-0">
                 <div class="col-md-4">
                   <img :src="restaurant.img_url" class="img-fluid rounded-start w-100" alt="...">
@@ -62,6 +63,7 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -174,6 +176,7 @@ export default {
       categories: [],
       filteredCategories: [],
       restaurants: [],
+
     };
   },
 
