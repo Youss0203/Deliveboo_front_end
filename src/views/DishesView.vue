@@ -70,6 +70,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    <button @click="goToPayment" class="btn btn-primary">Checkout</button>
                     
                 </div>
             </div>
@@ -187,7 +188,11 @@ export default {
         // prezzo totale di un piatto singolo X quantità
         calculateTotalForDish(dish) {
         return (dish.price * dish.quantity).toFixed(2);
-    },
+        },
+        // route per checkout
+        goToPayment() {
+        this.$router.push({ name: 'payment' });
+    }
     },
     created() {
         this.getDishes();
