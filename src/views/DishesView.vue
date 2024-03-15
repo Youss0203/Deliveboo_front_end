@@ -70,7 +70,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button @click="goToPayment" class="btn btn-primary">Checkout</button>
+                    <button @click="goToPayment" class="btn btn-success">Vai al pagamento</button>
                     
                 </div>
             </div>
