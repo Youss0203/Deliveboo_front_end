@@ -59,13 +59,13 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Quantità totale</th>
+                                <!-- <th scope="col">Quantità totale</th> -->
                                 <th scope="col">Totale</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td> {{ getTotalQuantity() }} </td>
+                                <!-- <td> {{ getTotalQuantity() }} </td> -->
                                 <td>{{ getTotalPrice().toFixed(2) }} €</td>
                             </tr>
                         </tbody>
@@ -74,6 +74,7 @@
                         <button @click="goToPayment" class="btn btn-success">Vai al pagamento</button>
                         <button @click="clearCart" class="btn btn-danger">Svuota carrello</button>
                     </div>
+                    
 
                     
                 </div>
