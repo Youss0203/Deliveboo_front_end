@@ -70,7 +70,11 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button @click="goToPayment" class="btn btn-success">Vai al pagamento</button>
+                    <div class="d-flex justify-content-between">
+                        <button @click="goToPayment" class="btn btn-success">Vai al pagamento</button>
+                        <button @click="clearCart" class="btn btn-danger">Svuota carrello</button>
+                    </div>
+
                     
                 </div>
             </div>
@@ -90,13 +94,13 @@ export default {
         }
     },
 
+  
+
     data() {
         return {
             dishes: [],
             quantity: this.initialQuantity,
-            cart: [
-
-            ],
+            cart: [],
         }
     },
 
@@ -177,6 +181,17 @@ export default {
                 });
         },
 
+        clearCart() {
+        // Rimuovi tutti gli elementi dal carrello
+        this.cart = [];
+
+        // Aggiorna il carrello nel localStorage
+        localStorage.removeItem('cart');
+        console.log('Carrello svuotato');
+        },
+
+        
+
         // totale quantita dei piatti 
         getTotalQuantity() {
         return this.cart.reduce((total, dish) => total + dish.quantity, 0);
@@ -195,8 +210,20 @@ export default {
     }
     },
     created() {
+
         this.getDishes();
 
+        const cart = JSON.parse(localStorage.getItem('cart'));
+            if (cart) {
+                this.cart = cart;
+            }
+
+    },
+
+    // Svuota il carrello cambiando pagina
+    beforeRouteLeave(to, from, next) {
+        this.clearCart();
+        next();
     },
 
 };
