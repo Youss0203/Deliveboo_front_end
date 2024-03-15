@@ -70,10 +70,10 @@
                             </tr>
                         </tbody>
                     </table>
-                        <div class="d-flex justify-content-between">
-                            <button @click="goToPayment" class="btn btn-success">Vai al pagamento</button>
-                            <button @click="clearCart" class="btn btn-danger">Svuota carrello</button>
-                        </div>
+                    <div class="d-flex justify-content-between">
+                        <button @click="goToPayment" class="btn btn-success">Vai al pagamento</button>
+                        <button @click="clearCart" class="btn btn-danger">Svuota carrello</button>
+                    </div>
 
                     
                 </div>
