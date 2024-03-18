@@ -63,13 +63,12 @@
                     <p class="card-text fs-6">
                       {{ restaurant.address }}
                     </p>
+                    <p class="card-text fs-6" v-for="category in restaurant.categories">
+                      {{ category.name }}
+                    </p>
                     
                     <!-- Iterazione sulle categorie del ristorante -->
-                    <div v-for="category in restaurant.categories" :key="category.id">
-                      <p>
-                        {{ category.name }}
-                      </p>
-                    </div>
+
                   </div>
                 </div>
               </div>
