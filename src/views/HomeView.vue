@@ -30,11 +30,11 @@
 
   <section class="container custom_font py-5" v-if="restaurants">
     <div class="row">
-      <div class="col-4">
-        <div class="row">
-          <div class="col-12" v-for="category in categories">
+      <div class="col-4 ">
+        <div class="">
+          <div class="" v-for="category in categories">
             <div>
-              <p @click="addFilter(category.id)" class="my_bord fs-5" :class="filteredCategories.includes(category.id) ? 'active' : '' ">
+              <p @click="addFilter(category.id)" class="my_bord fs-6 fs-md-5 " :class="filteredCategories.includes(category.id) ? 'active' : '' ">
                 {{ category.name }}
               </p>
             </div>
@@ -43,20 +43,21 @@
       </div>
       <div class="col-8">
         <div class="row">
-
-          <div class="col-12" v-for="restaurant in restaurants">
+          
+          <div class="col-12 py-1" v-for="restaurant in restaurants">
             <!--card orizzontale-->
-              <div class="card mb-3" style="max-width: 800px;" @click="$router.push({name:'dishes', params:{restaurant: restaurant.id }})">
+              <div class="card border-0 mb-3" style="max-width: 800px;" @click="$router.push({name:'dishes', params:{restaurant: restaurant.id }})">
               <div class="row g-0">
                 <div class="col-md-4">
-                  <img :src="restaurant.img_url" class="img-fluid rounded-start w-100" alt="...">
+                  <img :src="restaurant.img_url" class="img-fluid rounded-3 w-100" alt="...">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">{{ restaurant.company_name }}</h5>
-                    <p class="card-text">
+                    <h5 class="card-title fs-3">{{ restaurant.company_name }}</h5>
+                    <p class="card-text fs-6">
                       {{ restaurant.address }}
                     </p>
+                    
                     <!-- Iterazione sulle categorie del ristorante -->
                     <div v-for="category in restaurant.categories" :key="category.id">
                       <p>
@@ -265,6 +266,6 @@ export default {
 }
 
 .active{
-  background-color: green;
+  background-color: #27B8B2;
 }
 </style>

@@ -4,7 +4,7 @@
 
       <div class="col-12 text-end mt-3 my-total-position">
 
-        <button type="button" class="btn btn-primary my-cart d-lg-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn cart-bg my-cart text-white d-lg-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="fa fa-shopping-cart" style="font-size:24px"></i>
         </button>
         <span class="total-item-style d-lg-none">
@@ -47,14 +47,14 @@
                         <div class="cart-item">
                           <button
                             @click="removeFromCart(dish.id)"
-                            class="btn btn-danger p-1 m-1"
+                            class="btn btn-red text-white p-1 m-1"
                           >
                             -
                           </button>
                           <span>{{ dish.quantity }}</span>
                           <button
                             @click="increaseQuantity(dish.id)"
-                            class="btn btn-success p-1 m-1"
+                            class="btn btn-green text-white p-1 m-1"
                           >
                             +
                           </button>
@@ -80,10 +80,10 @@
                   </tbody>
                 </table>
                 <div class="d-flex justify-content-between">
-                  <button @click="goToPayment" class="btn btn-success">
+                  <button @click="goToPayment" class="btn btn-green text-white">
                     Vai al pagamento
                   </button>
-                  <button @click="clearCart" class="btn btn-danger">
+                  <button @click="clearCart" class="btn btn-red text-white">
                     Svuota carrello
                   </button>
                 </div>
@@ -99,12 +99,12 @@
       <div class="col-12 col-lg-8">
         <div class="col-12">
           <div v-for="dish in dishes">
-            <div class="card mb-3 mt-5">
+            <div class="card border-0 mb-3 mt-5">
               <div class="row g-0">
                 <div class="col-md-6">
                   <img
                     :src="dish.img_url"
-                    class="img-fluid rounded-start"
+                    class="img-fluid rounded-3"
                     alt="..."
                   />
                 </div>
@@ -115,7 +115,7 @@
                       Ingredienti : {{ dish.ingredients }}
                     </p>
                     <p class="card-text fs-6">Prezzo : {{ dish.price }} €</p>
-                    <button class="btn btn-success" @click="addDish(dish)">
+                    <button class="btn my-bg-tasto" @click="addDish(dish)">
                       Aggiungi al carrello
                     </button>
                   </div>
@@ -148,14 +148,14 @@
                     <div class="cart-item">
                       <button
                         @click="removeFromCart(dish.id)"
-                        class="btn btn-danger p-1 m-1"
+                        class="btn btn-red text-white p-1 m-1"
                       >
                         -
                       </button>
                       <span>{{ dish.quantity }}</span>
                       <button
                         @click="increaseQuantity(dish.id)"
-                        class="btn btn-success p-1 m-1"
+                        class="btn btn-green text-white p-1 m-1"
                       >
                         +
                       </button>
@@ -181,10 +181,10 @@
               </tbody>
             </table>
             <div class="d-flex justify-content-between">
-              <button @click="goToPayment" class="btn btn-success my-btn">
+              <button @click="goToPayment" class="btn btn-green text-white my-btn">
                 Vai al pagamento
               </button>
-              <button @click="clearCart" class="btn btn-danger my-btn">
+              <button @click="clearCart" class="btn btn-red text-white my-btn">
                 Svuota carrello
               </button>
             </div>
@@ -345,7 +345,7 @@ export default {
 }
 
 .total-item-style {
-  background-color: red;
+  background-color: #A61C3C;
   color: white;
   padding: 0px 6px 0px 6px;
   border-radius: 50%;
@@ -358,6 +358,19 @@ export default {
 .my-total-position {
 
   position: relative;
+}
+
+.btn-green {
+  background-color: #157F1F;
+}
+
+.btn-red {
+  background-color: #A61C3C;
+}
+
+.cart-bg {
+
+  background-color: #27B8B2;
 }
 
 </style>
