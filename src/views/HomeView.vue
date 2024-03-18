@@ -46,8 +46,6 @@
 
           <div class="col-12" v-for="restaurant in restaurants">
             <!--card orizzontale-->
-
-
               <div class="card mb-3" style="max-width: 800px;" @click="$router.push({name:'dishes', params:{restaurant: restaurant.id }})">
               <div class="row g-0">
                 <div class="col-md-4">
@@ -59,11 +57,16 @@
                     <p class="card-text">
                       {{ restaurant.address }}
                     </p>
+                    <!-- Iterazione sulle categorie del ristorante -->
+                    <div v-for="category in restaurant.categories" :key="category.id">
+                      <p>
+                        {{ category.name }}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -71,7 +74,6 @@
   </section>
 
   <section class="my_sfondo ">
-
     <!-- Inizio primo elemento  -->
     <div class="container mb-4 my-container">
       <div class="row">
@@ -90,8 +92,6 @@
       </div>
     </div>
   
-
-
     <!-- Inizio secondo Elemento -->
     
     <div class="container pb-4 my-container">
@@ -111,58 +111,6 @@
       </div>
     </div>
   </section>
-
-  
-  <!-- recensioni -->
-  <!-- <section class="sfondo_orange">
-    <div class="container-fluid">
-      <div class="row d-flex justify-content-center">
-        <div class="col-xs-12 col-md-3 ">
-        <div class="card border-none mb-3 mt-3" style="max-width: 18rem;">
-            <div class="card-header">
-              <img src="../img/user food.png" class="image-user">
-              <span class="star p-2">
-                 Riccardo : &#9733; 4.5 eccellente
-              </span>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Stupendo</h5>
-              <p class="card-text">Un sito comodo da usare ed elegante.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-3 ">
-        <div class="card border-none mb-3 mt-3" style="max-width: 18rem;">
-            <div class="card-header">
-              <img src="../img/user food.png" class="image-user">
-              <span class="star p-2">
-                 Sofia : &#9733; 4 buono
-              </span>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Essenziale</h5>
-              <p class="card-text">Ne avevo proprio bisogno.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-3 ">
-        <div class="card border-none mb-3 mt-3" style="max-width: 18rem;">
-            <div class="card-header">
-              <img src="../img/user food.png" class="image-user">
-              <span class="star p-2">
-                 Carlo: &#9733; 4.8 eccellente
-              </span>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Magia</h5>
-              <p class="card-text">Dove puoi trovare tutto con un click.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-  
 </template>
 
 <script>
@@ -210,7 +158,6 @@ export default {
         });
     },
     addFilter(category) {
-
       if (this.filteredCategories.includes(category)) {
         let index = this.filteredCategories.indexOf(category);
 
@@ -222,8 +169,6 @@ export default {
 
         this.filteredCategories.push(category);
       }
-
-
       this.getRestaurants();
     },
   },
@@ -240,11 +185,6 @@ export default {
 .custom_font {
   @extend .montserrat;
 }
-
-// section.container.custom_font{
-//   background-image: url(../img/sfondo-food.jpg);
-
-// }
 .custom_bg {
   background-color: #ffc200;
   width: 12rem;
@@ -254,10 +194,6 @@ export default {
   background-image: url("../img/sfondo-food.jpg");
   object-fit: contain;
 }
-
-// .custom_font_color {
-//   // color: #dd9117;
-// }
 
 .custom_font_size {
   font-size: 15px;
@@ -309,10 +245,6 @@ export default {
   background-color: #27b8b2;
 }
 
-
-
-
-
 .my-card-flex {
 
   display: flex;
@@ -330,6 +262,5 @@ export default {
 
 .active{
   background-color: green;
-
 }
 </style>

@@ -15,7 +15,6 @@
                                 <p class="card-text fs-6">Ingredienti : {{ dish.ingredients }}</p>
                                 <p class="card-text fs-6">Prezzo : {{ dish.price }} €</p>
                                 <button class="btn btn-success " @click="addDish(dish)">Aggiungi al carrello</button>
-                                
                             </div>
                         </div>
                     </div>
@@ -39,7 +38,7 @@
                         </thead>
                         <tbody>
                             <tr v-for="dish in cart">
-                                <td>
+                                <td class="">
                                     {{dish.name}}
                                 </td>
                                 <td>
