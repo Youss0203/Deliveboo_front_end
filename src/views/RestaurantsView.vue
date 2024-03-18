@@ -44,7 +44,9 @@
                         <div class="col-12">
                             <img :src="restaurant.img_url" class="img-fluid rounded-3" alt="...">
                         </div>
+
                         <div class="col-12">
+
                             <div class="card-body my-border-none">
                                 <h5 class="card-title fs-2">{{ restaurant.company_name }}</h5>
                                 <p class="fs-6">Indirizzo: {{ restaurant.address }}</p>

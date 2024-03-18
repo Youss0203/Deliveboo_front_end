@@ -283,11 +283,13 @@ export default {
 
 .active{
   background-color: #27B8B2;
+
 }
 
 .my-position {
   position: absolute;
   top: -300px;
   z-index: -1;
+
 }
 </style>
