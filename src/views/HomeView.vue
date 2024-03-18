@@ -15,17 +15,23 @@
     </div>
   </div>
   <section class="container custom_font py-5">
+    
     <div class="row d-flex justify-content-center">
       <!-- <h1 class="text-center mb-4">Categorie</h1> -->
+
+      
       <div
         class="card btn m-2 mb-5 d-flex align-items-center custom_bg pt-3 my-card"
         v-for="category in categories" @click="addFilter(category.id)">
-        <img :src="category.img_url" class="card-img-top w-50" alt="..." />
-        <p class="btn fs-5 pb-0">
-          {{ category.name }}
-        </p>
+        
+          <img :src="category.img_url" class="card-img-top w-50" alt="..." />
+          <p class="btn fs-5 pb-0">
+            {{ category.name }}
+          </p>
+        
       </div>
     </div>
+   
   </section>
 
   <section class="container custom_font py-5" v-if="restaurants">
@@ -51,7 +57,7 @@
                 <div class="col-md-4">
                   <img :src="restaurant.img_url" class="img-fluid rounded-3 w-100" alt="...">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8" id="1">
                   <div class="card-body">
                     <h5 class="card-title fs-3">{{ restaurant.company_name }}</h5>
                     <p class="card-text fs-6">
@@ -76,6 +82,9 @@
 
   <section class="my_sfondo ">
     <!-- Inizio primo elemento  -->
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="my-position"><path fill="#27B8B2" fill-opacity="1" d="M0,224L80,240C160,256,320,288,480,277.3C640,267,800,213,960,208C1120,203,1280,245,1360,266.7L1440,288L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+    
     <div class="container mb-4 my-container">
       <div class="row">
         <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center">
@@ -171,6 +180,11 @@ export default {
         this.filteredCategories.push(category);
       }
       this.getRestaurants();
+
+      // window.scrollTo({   top: 1150,   left:0,   behavior: "auto", });
+      setTimeout(()=>{
+        window.scrollTo({   top: 1150,   left:0,   behavior: "auto", });
+      }, 300) 
     },
   },
 
@@ -248,6 +262,8 @@ export default {
 // regole scss per l'ultimo elemento
 .my_sfondo {
   background-color: #27b8b2;
+  position: relative;
+  margin-top: 1.5rem;
 }
 
 .my-card-flex {
@@ -267,5 +283,11 @@ export default {
 
 .active{
   background-color: #27B8B2;
+}
+
+.my-position {
+  position: absolute;
+  top: -300px;
+  z-index: -1;
 }
 </style>

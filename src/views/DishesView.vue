@@ -20,6 +20,7 @@
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
+      
       >
       <div class="modal-dialog">
       <div class="modal-content">
@@ -80,7 +81,7 @@
                   </tbody>
                 </table>
                 <div class="d-flex justify-content-between">
-                  <button @click="goToPayment" class="btn btn-green text-white">
+                  <button @click="goToPayment" class="btn btn-green text-white" data-bs-dismiss="modal">
                     Vai al pagamento
                   </button>
                   <button @click="clearCart" class="btn btn-red text-white">
