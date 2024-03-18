@@ -59,41 +59,51 @@
                             +
                           </button>
                         </div>
-                      </td>
-                      <td>{{ calculateTotalForDish(dish) }} €</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <!-- <th scope="col">Quantità totale</th> -->
-                      <th scope="col">Totale</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <!-- <td> {{ getTotalQuantity() }} </td> -->
-                      <td>{{ getTotalPrice().toFixed(2) }} €</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="d-flex justify-content-between">
-                  <button @click="goToPayment" class="btn btn-success">
-                    Vai al pagamento
-                  </button>
-                  <button @click="clearCart" class="btn btn-danger">
-                    Svuota carrello
-                  </button>
+                        <div class=" col-12 col-md-6">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold fs-2">{{ dish.name }}</h5>
+                                <p class="card-text fs-6">Ingredienti : {{ dish.ingredients }}</p>
+                                <p class="card-text fs-6">Prezzo : {{ dish.price }} €</p>
+                                <button class="btn btn-success " @click="addDish(dish)">Aggiungi al carrello</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      </div>
-      </div>
+        <div class="col-4">
+            <!--qui ci deve andare il carrello-->
+            <div class="card mt-5" >
+                <div class="card-body">
+                    <h5 class="card-title text-center fw-bold">Carrello</h5>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Piatto</th>
+                                <th scope="col">Quantità</th>
+                                <th scope="col">Prezzo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="dish in cart">
+                                <td class="">
+                                    {{dish.name}}
+                                </td>
+                                <td>
+                                    <div class="cart-item">
+                                        <button @click="removeFromCart(dish.id)" class="btn btn-danger p-1 m-1">-</button>
+                                        <span>{{dish.quantity}}</span>
+                                        <button @click="increaseQuantity(dish.id)" class="btn btn-success p-1 m-1">+</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ calculateTotalForDish(dish) }} €
+                                </td>    
+                            </tr>
+                        </tbody>
+                    </table>
 
 
       <div class="col-12 col-lg-8">
