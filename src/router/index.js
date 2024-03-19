@@ -36,6 +36,12 @@ const router = createRouter({
       name: 'payment',
       component: PaymentForm,
     },
+    // view per gli ordini 
+    {
+      path: '/orders',
+      name: 'orders',
+      component: OrderView,
+    },
   ]
 })
 
