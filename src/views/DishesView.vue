@@ -185,7 +185,7 @@
               </tbody>
             </table>
             <div class="d-flex justify-content-between">
-              <button @click="goToPayment" class="btn btn-green text-white my-btn">
+              <button @click="$router.push({ name: 'payment'})" class="btn btn-success my-btn">
                 Vai al pagamento
               </button>
               <button @click="clearCart" class="btn btn-red text-white my-btn">
@@ -319,9 +319,9 @@ export default {
       return (dish.price * dish.quantity).toFixed(2);
     },
     // route per checkout
-    goToPayment() {
-      this.$router.push({ name: "payment" });
-    },
+    // goToPayment() {
+    //   this.$router.push({ name: "payment" });
+    // },
   },
   created() {
     this.getDishes();
