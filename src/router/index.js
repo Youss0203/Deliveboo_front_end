@@ -3,7 +3,6 @@ import HomeView from '../views/HomeView.vue'
 import RestaurantsView from '../views/RestaurantsView.vue'
 import DishesView from '../views/DishesView.vue'
 import PaymentForm from '../views/PaymentForm.vue'
-import OrderView from '../views/OrderView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,12 +35,6 @@ const router = createRouter({
       path: '/payment',
       name: 'payment',
       component: PaymentForm,
-    },
-    // view per gli ordini 
-    {
-      path: '/orders',
-      name: 'orders',
-      component: OrderView,
     },
   ]
 })
