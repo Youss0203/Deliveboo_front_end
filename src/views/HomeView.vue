@@ -187,12 +187,9 @@ export default {
     },
   },
 
- 
-
   created() {
     this.getCategories();
     this.cart = [] ;
-
   },
 };
 </script>
