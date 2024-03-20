@@ -48,7 +48,7 @@
       <button
         type="submit"
         id="submit-button"
-        class="button button--small button--green"  @click="$router.push({ name: 'thankspage', })">
+        class="button button--small button--green">
         Paga
       </button>
     </form>
@@ -89,6 +89,7 @@ export default {
                       this.orderInfo.paymentNonce = payload.nonce;
                       // Chiamata al metodo submitOrder
                       this.submitOrder();
+                      this.$router.push({ name: 'thankspage', })
                   });
               });
           }
