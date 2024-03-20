@@ -1,8 +1,8 @@
 <template>
-    <section class="container-fluid p-5">
-        <div id="dropin-container"></div>
-    <button id="submit-button" class="button button--small button--green">Purchase</button>
-    </section>
+<section class="container-fluid p-5 d-flex flex-column align-items-center">
+  <div id="dropin-container"></div>
+  <button id="submit-button" class="btn btn-sm text-white w-20" style="background-color: #fe7e00;">Pagamento</button>
+</section>
 
 </template>
 
@@ -40,6 +40,10 @@ export default {
     -webkit-appearance: none;
     -moz-appearance: none;
     display: inline-block;
+}
+
+#dropin-container{
+    width: 30%;
 }
 
 .button--small {
