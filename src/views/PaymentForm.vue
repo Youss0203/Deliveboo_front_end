@@ -60,68 +60,51 @@ import axios from "axios";
 
 export default {
   data() {
-    return {
-      orderInfo: {
-        customer_name: "",
-        customer_lastname: "",
-        customer_address: "",
-        customer_phone: "",
-        // Aggiungi una proprietà per contenere il nonce del pagamento
-        paymentNonce: "",
-      },
-    };
+      return {
+          orderInfo: {
+              customer_name: "",
+              customer_lastname: "",
+              customer_address: "",
+              customer_phone: "",
+              paymentNonce: "",
+          },
+      };
   },
   mounted() {
-    let button = document.querySelector("#submit-button");
+      let button = document.querySelector("#submit-button");
 
-    braintree.dropin.create(
-      {
-        authorization: "sandbox_g42y39zw_348pk9cgf3bgyw2b",
-        selector: "#dropin-container",
-      },
-      (err, instance) => {
-        button.addEventListener("click", () => {
-          instance.requestPaymentMethod((err, payload) => {
-            if (err) {
-              console.error(err);
-              return;
-            }
-            // Assegna il nonce del pagamento alla proprietà paymentNonce
-            this.orderInfo.paymentNonce = payload.nonce;
-            // Chiamata al metodo submitOrder
-            this.submitOrder();
-          });
-        });
-      }
-    );
+      braintree.dropin.create(
+          {
+              authorization: "sandbox_g42y39zw_348pk9cgf3bgyw2b",
+              selector: "#dropin-container",
+          },
+          (err, instance) => {
+              button.addEventListener("click", () => {
+                  instance.requestPaymentMethod((err, payload) => {
+                      if (err) {
+                          console.error(err);
+                          return;
+                      }
+                      // Assegna il nonce del pagamento alla proprietà paymentNonce
+                      this.orderInfo.paymentNonce = payload.nonce;
+                      // Chiamata al metodo submitOrder
+                      this.submitOrder();
+                  });
+              });
+          }
+      );
   },
   methods: {
-    async submitOrder() {
-                try {
-                    const response = await axios.post('http://127.0.0.1:8000/api/orders', this.orderInfo);
-                    console.log(response);
-                } catch (error) {
-                    console.error(error);
-                }
-            },
-
-    // submitOrder() {
-    //   // Verifica la struttura dei dati prima di inviare la richiesta POST
-    //   console.log(this.orderInfo);
-
-    //   // Invia i dati dell'ordine al server
-    //   axios
-    //     .post("http://127.0.0.1:8000/api/orders", this.orderInfo)
-    //     .then((response) => {
-    //       console.log(response);
-    //       // Gestisci la risposta dal server come necessario
-    //     })
-    //     .catch((error) => {
-    //       console.warn(error);
-
-    //       console.log("non funziona fratelli");
-    //     });
-    // },
+      submitOrder() {
+          axios
+              .post("http://127.0.0.1:8000/api/orders", this.orderInfo)
+              .then((response) => {
+                  console.log(response);
+              })
+              .catch(function (error) {
+                  console.warn(error);
+              });
+      },
   },
 };
 </script>
