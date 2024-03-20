@@ -1,62 +1,164 @@
 <template>
-    <section class="container-fluid p-5">
-        <div id="dropin-container"></div>
-    <button id="submit-button" class="button button--small button--green">Purchase</button>
-    </section>
+  <section class="container-fluid p-5">
+    <!-- Aggiunta del nuovo form -->
+    <form @submit.prevent="submitOrder">
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          v-model="orderInfo.customer_name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="surname">Cognome</label>
+        <input
+          type="text"
+          class="form-control"
+          id="surname"
+          v-model="orderInfo.customer_lastname"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="address">Indirizzo</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          v-model="orderInfo.customer_address"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Numero di telefono</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="phoneNumber"
+          v-model="orderInfo.customer_phone"
+          required
+        />
+      </div>
+      <!-- Fine del nuovo form -->
 
+      <div id="dropin-container"></div>
+      <button
+        type="submit"
+        id="submit-button"
+        class="button button--small button--green"
+      >
+        Purchase
+      </button>
+    </form>
+  </section>
 </template>
 
 <script>
-export default {
-    mounted() {
-        let button = document.querySelector('#submit-button');
+import axios from "axios";
 
-        braintree.dropin.create({
-            authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
-            selector: '#dropin-container'
-        }, function (err, instance) {
-            button.addEventListener('click', function () {
-                instance.requestPaymentMethod(function (err, payload) {
-                    // Submit payload.nonce to your server
-                });
-            })
+export default {
+  data() {
+    return {
+      orderInfo: {
+        customer_name: "",
+        customer_lastname: "",
+        customer_address: "",
+        customer_phone: "",
+        // Aggiungi una proprietà per contenere il nonce del pagamento
+        paymentNonce: "",
+      },
+    };
+  },
+  mounted() {
+    let button = document.querySelector("#submit-button");
+
+    braintree.dropin.create(
+      {
+        authorization: "sandbox_g42y39zw_348pk9cgf3bgyw2b",
+        selector: "#dropin-container",
+      },
+      (err, instance) => {
+        button.addEventListener("click", () => {
+          instance.requestPaymentMethod((err, payload) => {
+            if (err) {
+              console.error(err);
+              return;
+            }
+            // Assegna il nonce del pagamento alla proprietà paymentNonce
+            this.orderInfo.paymentNonce = payload.nonce;
+            // Chiamata al metodo submitOrder
+            this.submitOrder();
+          });
         });
-    }
-}
+      }
+    );
+  },
+  methods: {
+    async submitOrder() {
+                try {
+                    const response = await axios.post('http://127.0.0.1:8000/api/orders', this.orderInfo);
+                    console.log(response);
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+
+    // submitOrder() {
+    //   // Verifica la struttura dei dati prima di inviare la richiesta POST
+    //   console.log(this.orderInfo);
+
+    //   // Invia i dati dell'ordine al server
+    //   axios
+    //     .post("http://127.0.0.1:8000/api/orders", this.orderInfo)
+    //     .then((response) => {
+    //       console.log(response);
+    //       // Gestisci la risposta dal server come necessario
+    //     })
+    //     .catch((error) => {
+    //       console.warn(error);
+
+    //       console.log("non funziona fratelli");
+    //     });
+    // },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .button {
-    cursor: pointer;
-    font-weight: 500;
-    left: 3px;
-    line-height: inherit;
-    position: relative;
-    text-decoration: none;
-    text-align: center;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 3px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    display: inline-block;
+  cursor: pointer;
+  font-weight: 500;
+  left: 3px;
+  line-height: inherit;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: inline-block;
 }
 
 .button--small {
-    padding: 10px 20px;
-    font-size: 0.875rem;
+  padding: 10px 20px;
+  font-size: 0.875rem;
 }
 
 .button--green {
-    outline: none;
-    background-color: #64d18a;
-    border-color: #64d18a;
-    color: white;
-    transition: all 200ms ease;
+  outline: none;
+  background-color: #64d18a;
+  border-color: #64d18a;
+  color: white;
+  transition: all 200ms ease;
 }
 
 .button--green:hover {
-    background-color: #8bdda8;
-    color: white;
-}    
+  background-color: #8bdda8;
+  color: white;
+}
 </style>

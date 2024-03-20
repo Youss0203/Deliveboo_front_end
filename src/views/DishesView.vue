@@ -11,7 +11,6 @@
         <span class="total-item-style d-lg-none">
             {{ getTotalQuantity() }}
         </span>
-
       </div>
 
       <!-- Modal -->
