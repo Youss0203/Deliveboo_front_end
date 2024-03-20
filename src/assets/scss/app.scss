@@ -12,10 +12,14 @@
     background-color: #ffc200;
 }
 
-
-.btn:hover {
-    background-color: #27B8B2;
+.my-bg-tasto:hover{
+    background-color: #ffdd6d;
 }
+
+// .btn:hover {
+//     background-color: #5ed9ff;
+// }
+
 
 // TABLET RESPONSIVE SCSS
 @media screen and (min-width: 768px) {
