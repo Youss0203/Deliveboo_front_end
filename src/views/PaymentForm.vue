@@ -48,9 +48,8 @@
       <button
         type="submit"
         id="submit-button"
-        class="button button--small button--green"
-      >
-        Purchase
+        class="button button--small button--green"  @click="$router.push({ name: 'thankspage', })">
+        Paga
       </button>
     </form>
   </section>

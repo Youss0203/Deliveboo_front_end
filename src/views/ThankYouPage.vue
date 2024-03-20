@@ -8,9 +8,6 @@
             Grazie per aver acquistato da DeliveBoo!<br>Stiamo elaborando il tuo ordine! 
         </h1>
     </section>
-    <h2 class="px-5 fw-bold">
-        Riepilogo ordine:
-    </h2>
 </template>
 
 <script>
