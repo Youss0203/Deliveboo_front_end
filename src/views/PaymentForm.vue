@@ -78,6 +78,7 @@ export default {
               authorization: "sandbox_g42y39zw_348pk9cgf3bgyw2b",
               selector: "#dropin-container",
           },
+          
           (err, instance) => {
               button.addEventListener("click", () => {
                   instance.requestPaymentMethod((err, payload) => {
